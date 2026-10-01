@@ -122,7 +122,7 @@ button.clay:active:not(:disabled) { transform: translateY(5px) scale(1.04, .94);
 
 /* ---------- タイトル ---------- */
 .title .main { gap: clamp(16px, 4vh, 40px); }
-.logo { display: flex; gap: .03em; font-family: var(--kana-font); font-size: clamp(54px, 13vmin, 136px); line-height: 1; }
+.logo { display: flex; gap: .03em; font-family: var(--kana-font); font-size: clamp(30px, min(13vmin, 12.2vw), 136px); line-height: 1; } /* 7文字＋すきま＝約7.5em。せまい画面では横幅に収める */
 .logo span {
   display: inline-block; color: var(--c); -webkit-text-stroke: .07em #fff; paint-order: stroke fill;
   text-shadow: 0 .05em 0 rgba(0, 0, 0, .12), 0 .12em .12em rgba(70, 40, 20, .35); animation: letter 1.8s ease-in-out infinite;
@@ -413,7 +413,7 @@ body.dash-on { --d-page: #f5eee3; }
 .dtablewrap .dtable { max-width: 420px; display: inline-table; margin-right: 20px; vertical-align: top; }
 .journey { display: flex; align-items: center; margin-top: 10px; }
 .jw { position: relative; flex: none; }
-.jd { display: block; width: clamp(26px, 6vw, 46px); aspect-ratio: 1; border-radius: 50%; background: center / cover #ddd; box-shadow: 0 0 0 2px #fff; }
+.jd { display: block; width: clamp(20px, 6vw, 46px); aspect-ratio: 1; border-radius: 50%; background: center / cover #ddd; box-shadow: 0 0 0 2px #fff; }
 .jw.todo .jd { filter: grayscale(1) opacity(.45); }
 .jw.now .jd { box-shadow: 0 0 0 3px #fff, 0 0 0 5px var(--d-series); }
 .jn { position: absolute; bottom: -4px; right: -4px; background: var(--d-surface); border-radius: 99px; font-size: 11px; padding: 0 5px; box-shadow: 0 0 0 1px var(--d-grid); font-variant-numeric: tabular-nums; }
@@ -1993,7 +1993,7 @@ window.COSTUME_META = {"ver": "47350868eb", "ids": ["a", "azarashi", "boss_densh
     setStage("bg_title", "sora");
     const logo = "ひらがな あそび".split("").map((ch, i) =>
       ch === " " ? '<span class="gap"></span>' : `<span style="--c:${Object.values(ROW_COLOR)[i % 10]};animation-delay:${i * 0.12}s">${ch}</span>`).join("");
-    const parade = ["a", "i", "u", "ne", "hi", "ki", "wa"].map((id) => buddyHtml(id, "clamp(60px, 12vmin, 110px)")).join("");
+    const parade = ["a", "i", "u", "ne", "hi", "ki", "wa"].map((id) => buddyHtml(id, "clamp(36px, min(12vmin, 12.5vw), 110px)")).join(""); // 7体が横幅に収まる大きさ
     view(`<div class="screen title"><div class="main">
       <div class="logo">${logo}</div>
       <div class="parade">${parade}</div>
@@ -2070,7 +2070,7 @@ window.COSTUME_META = {"ver": "47350868eb", "ids": ["a", "azarashi", "boss_densh
     music("home");
     const yard = yardBuddies();
     const yardHtml = (yard.length ? yard : ["a", "i", "u"]).map((id) =>
-      `<button class="yard-b" data-id="${id}" aria-label="${buddyName(id)}">${buddyHtml(id, bossById[id] ? "clamp(96px, 20vmin, 170px)" : "clamp(70px, 14vmin, 128px)")}</button>`).join("");
+      `<button class="yard-b" data-id="${id}" aria-label="${buddyName(id)}">${buddyHtml(id, bossById[id] ? "clamp(54px, min(20vmin, 16vw), 170px)" : "clamp(36px, min(14vmin, 12vw), 128px)")}</button>`).join(""); // 6体が横幅に収まる大きさ
     const tr = targetRow();
     const goal = S.cleared.length >= D.rows.length
       ? `<div class="label">ぜんぶの せかいを たびしたよ！ おめでとう！</div>`
