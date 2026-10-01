@@ -321,8 +321,9 @@ button.clay:active:not(:disabled) { transform: translateY(5px) scale(1.04, .94);
 .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; }
 .stats div { background: #f6ecde; border-radius: 14px; padding: 8px 12px; }
 .stats b { display: block; font-size: 24px; font-variant-numeric: tabular-nums; }
-.mastery { display: grid; grid-template-rows: repeat(5, 42px); grid-auto-flow: column; grid-auto-columns: 42px; gap: 4px; direction: rtl; justify-content: center; }
-.mastery span { direction: ltr; display: grid; place-items: center; border-radius: 8px; font-family: var(--kana-font); font-size: 22px; background: #eee; }
+.mastery { display: grid; grid-template-rows: repeat(5, auto); grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: clamp(2px, .9vw, 4px); direction: rtl;
+  width: 100%; max-width: 502px; margin: 0 auto; container-type: inline-size; } /* 11列を画面の幅に合わせて伸び縮み（最大で1マス42px） */
+.mastery span { direction: ltr; display: grid; place-items: center; aspect-ratio: 1; min-width: 0; border-radius: clamp(4px, 1.6cqi, 8px); font-family: var(--kana-font); font-size: min(22px, 5.2cqi); background: #eee; }
 .mastery span.blank { background: transparent; }
 .mastery .l0 { background: #eee; color: #bbb; }
 .mastery .l1, .mastery .l2 { background: #ffe38a; }
@@ -465,6 +466,12 @@ body.dash-on { --d-page: #f5eee3; }
 /* おうちのかた画面：きせかえの絵の保存のすすみぐあい */
 .cos-bar { height: 10px; border-radius: 999px; background: var(--gray); overflow: hidden; margin: 4px 0 8px; }
 .cos-bar i { display: block; height: 100%; width: 0; background: var(--green); transition: width .3s; }
+
+/* 幅のせまいスマホでは、おうちのかた画面の枠の内側の余白を少し詰める */
+@media (max-width: 480px) {
+  .panel { padding: 14px 12px; }
+  .parent .main { gap: 12px; }
+}
 
 </style>
 </head>
